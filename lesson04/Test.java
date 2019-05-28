@@ -1,3 +1,4 @@
+
 import task_1.UtilEquality;
 import task_2.UtilRing;
 import task_3.UtilRange;
@@ -21,8 +22,8 @@ public class Test {
 
         b = UtilEquality.compareForEquality(x, y, z); // task_1
         Printer.print("The numbers " + x + ", " + y + " and " + z + " are equal - " + b);
-		
-		b = UtilEquality.compareForInequality(x, y, z); // task_1
+
+        b = UtilEquality.compareForInequality(x, y, z); // task_1
         Printer.print("The numbers " + x + ", " + y + " and " + z + " are inequal - " + b);
 
         d = UtilRing.calcSquare(x, y); // task_2
