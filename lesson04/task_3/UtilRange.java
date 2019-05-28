@@ -5,16 +5,16 @@ public class UtilRange {
     public static boolean checkForIncrease(int number) {
 
         int num1 = number % 10;
-        
-		number /= 10;
+
+        number /= 10;
 
         int num2 = number % 10;
-        
-		number /= 10;
+
+        number /= 10;
 
         int num3 = number % 10;
-        
-		number /= 10;
+
+        number /= 10;
 
         int num4 = number;
 
@@ -22,18 +22,18 @@ public class UtilRange {
     }
 
     public static boolean checkForDecrease(int number) {
-        
-		int num1 = number % 10;
-        
-		number /= 10;
+
+        int num1 = number % 10;
+
+        number /= 10;
 
         int num2 = number % 10;
-        
-		number /= 10;
+
+        number /= 10;
 
         int num3 = number % 10;
-        
-		number /= 10;
+
+        number /= 10;
 
         int num4 = number;
 
