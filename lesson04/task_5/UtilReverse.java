@@ -2,8 +2,35 @@ package task_5;
 
 public class UtilReverse {
 
-    public static int getReverse(int x) {
-        return x % 10 * 1000000 + x % 100 / 10 * 100000 + x % 1000 / 100 * 10000 + x / 1000 % 10 * 1000 + x / 10000 % 10 * 100 + x / 100000 % 10 * 10 + x / 1000000;
+    public static int getReverse(int number) {
+		
+		int num1 = number % 10 * 1_000_000;
+        
+		number /= 10;
+
+        int num2 = number % 10 * 100_000;
+        
+		number /= 10;
+
+        int num3 = number % 10 * 10_000;
+        
+		number /= 10;
+		
+		int num4 = number % 10 * 1000;
+        
+		number /= 10;
+		
+		int num5 = number % 10 * 100;
+        
+		number /= 10;
+		
+		int num6 = number % 10 * 10;
+        
+		number /= 10;
+
+        int num7 = number;
+		
+        return num1 + num2 + num3 + num4 + num5 + num6 + num7;
     }
 
 }

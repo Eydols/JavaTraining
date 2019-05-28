@@ -9,18 +9,21 @@ public class Test {
     public static void main(String[] args) {
         double x = 2.5;
         double y = 2.0;
-        double z = 2.5;
+        double z = 2.2;
 
         boolean b;
         double d;
         int i;
 
-        int f = 1556;
+        int f = 1567;
         int g = 123456;
         int h = 9876543;
 
         b = UtilEquality.compareForEquality(x, y, z); // task_1
         Printer.print("The numbers " + x + ", " + y + " and " + z + " are equal - " + b);
+		
+		b = UtilEquality.compareForInequality(x, y, z); // task_1
+        Printer.print("The numbers " + x + ", " + y + " and " + z + " are inequal - " + b);
 
         d = UtilRing.calcSquare(x, y); // task_2
         Printer.print("The area of the ring = " + d);
