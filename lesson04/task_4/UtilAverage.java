@@ -6,58 +6,61 @@ public class UtilAverage {
 
     public static double calcArithmeticMean(int number) {
 
-        int num1 = number % 10;
-
+        int numeral = number % 10;
         number /= 10;
+        int sum = numeral;
 
-        int num2 = number % 10;
-
+        numeral = number % 10;
         number /= 10;
+        sum += numeral;
 
-        int num3 = number % 10;
-
+        numeral = number % 10;
         number /= 10;
+        sum += numeral;
 
-        int num4 = number % 10;
-
+        numeral = number % 10;
         number /= 10;
+        sum += numeral;
 
-        int num5 = number % 10;
-
+        numeral = number % 10;
         number /= 10;
+        sum += numeral;
 
-        int num6 = number;
+        numeral = number;
+        sum += numeral;
 
-        return (double) (num1 + num2 + num3 + num4 + num5 + num6) / COUNT_NUM;
+        return (double) sum / COUNT_NUM;
     }
 
     public static double calcGeometricMean(int number) {
 
-        int num1 = number % 10;
-
+        int numeral = number % 10;
         number /= 10;
+        int mult = numeral;
 
-        int num2 = number % 10;
-
+        numeral = number % 10;
         number /= 10;
+        mult *= numeral;
 
-        int num3 = number % 10;
-
+        numeral = number % 10;
         number /= 10;
+        mult *= numeral;
 
-        int num4 = number % 10;
-
+        numeral = number % 10;
         number /= 10;
+        mult *= numeral;
 
-        int num5 = number % 10;
-
+        numeral = number % 10;
         number /= 10;
+        mult *= numeral;
 
-        int num6 = number;
+        numeral = number;
+        mult *= numeral;
 
-        return Math.pow(num1 * num2 * num3 * num4 * num5 * num6, 1.0 / COUNT_NUM);
+        return Math.pow(mult, 1.0 / COUNT_NUM);
     }
 }
+
 
 
 

@@ -4,35 +4,35 @@ public class UtilReverse {
 
     public static int getReverse(int number) {
 
-        int num1 = number % 10 * 1_000_000;
-
+        int numeral = number % 10;
         number /= 10;
+        int res = numeral * 10;
 
-        int num2 = number % 10 * 100_000;
-
+        numeral = number % 10;
         number /= 10;
+        res = (res + numeral) * 10;
 
-        int num3 = number % 10 * 10_000;
-
+        numeral = number % 10;
         number /= 10;
+        res = (res + numeral) * 10;
 
-        int num4 = number % 10 * 1000;
-
+        numeral = number % 10;
         number /= 10;
+        res = (res + numeral) * 10;
 
-        int num5 = number % 10 * 100;
-
+        numeral = number % 10;
         number /= 10;
+        res = (res + numeral) * 10;
 
-        int num6 = number % 10 * 10;
-
+        numeral = number % 10;
         number /= 10;
+        res = (res + numeral) * 10;
 
-        int num7 = number;
+        numeral = number;
+        res = res + numeral;
 
-        return num1 + num2 + num3 + num4 + num5 + num6 + num7;
+        return res;
     }
-
 }
 
 
