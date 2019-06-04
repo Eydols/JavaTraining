@@ -6,9 +6,14 @@ import by.epam.javatraining.haurylchyk.lesson06.tast03.view.Printer;
 public class Main {
     public static void main(String[] args) {
         int number = 9;
-        long fact = UtilFactorial.getFact(number);
+        long fact = UtilFactorial.calcFact(number);
         
         Printer.print("Factorial of number " + number + " equals " + fact);
+        
+        fact = UtilFactorial.calcFact2(number);
+        
+        Printer.print("Factorial of number " + number + " equals " + fact);
+        
     }
     
 }

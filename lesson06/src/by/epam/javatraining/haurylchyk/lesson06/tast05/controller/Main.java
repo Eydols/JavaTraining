@@ -5,7 +5,7 @@ import by.epam.javatraining.haurylchyk.lesson06.tast05.view.Printer;
 
 public class Main {
     public static void main(String[] args) {
-        int number = 997;
+        int number = 9;
         
         Printer.print("The number " + number + " is prime -- " + UtilPrimeNumber.isPrimeNum(number));
     }

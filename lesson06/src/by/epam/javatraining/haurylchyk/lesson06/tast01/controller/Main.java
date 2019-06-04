@@ -6,9 +6,7 @@ import by.epam.javatraining.haurylchyk.lesson06.tast01.view.Printer;
 public class Main {
     
     public static void main(String[] args) {
-        
-        Printer.print("Count heads are " + HeadsOrTails.getCountHeads(1000));
-    }
-    
-    
+        int countThrow = 1000;
+        Printer.print("Count heads are " + HeadsOrTails.calcCountHeads(countThrow));
+    }   
 }
