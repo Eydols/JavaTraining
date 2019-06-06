@@ -18,21 +18,21 @@ public class LetterTest {
         boolean expected = true;
         assertEquals(expected, Letter.isVowel(letter));
     }
-    
+
     @Test
     public void testisVowelIvalid() {
         char letter = 'F';
         boolean expected = false;
         assertEquals(expected, Letter.isVowel3(letter));
     }
-    
+
     @Test
     public void testisVowel2Low() {
         char letter = 'i';
         boolean expected = true;
         assertEquals(expected, Letter.isVowel2(letter));
     }
-    
+
     @Test
     public void testisVowel2Up() {
         char letter = 'O';
@@ -46,14 +46,14 @@ public class LetterTest {
         boolean expected = false;
         assertEquals(expected, Letter.isVowel2(letter));
     }
-    
-     @Test
+
+    @Test
     public void testisVowel3Low() {
         char letter = 'u';
         boolean expected = true;
         assertEquals(expected, Letter.isVowel3(letter));
     }
-    
+
     @Test
     public void testisVowel3Up() {
         char letter = 'Y';

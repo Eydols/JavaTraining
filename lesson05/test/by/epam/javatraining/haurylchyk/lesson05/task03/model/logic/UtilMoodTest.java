@@ -9,34 +9,28 @@ public class UtilMoodTest {
     public void testGetMoodZero() {
         int number = 0;
         String expected = ":(";
-        assertEquals(expected, UtilMood.getMood(number));
+        assertEquals(expected, UtilMood.showMood(number));
     }
 
     @Test
     public void testGetMoodOne() {
         int number = 1;
         String expected = ":|";
-        assertEquals(expected, UtilMood.getMood(number));
+        assertEquals(expected, UtilMood.showMood(number));
     }
 
     @Test
     public void testGetMoodTwo() {
         int number = 2;
         String expected = ":)";
-        assertEquals(expected, UtilMood.getMood(number));
+        assertEquals(expected, UtilMood.showMood(number));
     }
 
     @Test
     public void testGetMoodThree() {
         int number = 3;
         String expected = ":D";
-        assertEquals(expected, UtilMood.getMood(number));
+        assertEquals(expected, UtilMood.showMood(number));
     }
 
-    @Test
-    public void testGetMoodInvalid() {
-        int number = 4;
-        String expected = "Error!!!";
-        assertEquals(expected, UtilMood.getMood(number));
-    }
 }

@@ -2,49 +2,40 @@ package by.epam.javatraining.haurylchyk.lesson05.task02.model.logic;
 
 public class Letter {
 
+    public static final char[] VOWEL_LETTERS = {'a', 'e', 'i', 'o', 'u', 'y'};
+
     public static boolean isVowel(char letter) {
 
         letter = Character.toLowerCase(letter);
 
-        boolean result = false;
-
         switch (letter) {
-            case 'a': ;
-            case 'e': ;
-            case 'i': ;
-            case 'o': ;
-            case 'u': ;
-            case 'y': ;
-                result = true;
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':
+            case 'y':
+                return true;
         }
-        return result;
+        return false;
     }
 
     public static boolean isVowel2(char letter) {
 
         letter = Character.toLowerCase(letter);
 
-        boolean result = false;
-        char vowel[] = {'a', 'e', 'i', 'o', 'u', 'y'};
-
-        for (int i = 0; i < vowel.length; i++) {
-            if (vowel[i] == letter) {
-                result = true;
-                break;
+        for (int i = 0; i < VOWEL_LETTERS.length; i++) {
+            if (VOWEL_LETTERS[i] == letter) {
+                return true;
             }
         }
-        return result;
+        return false;
     }
 
     public static boolean isVowel3(char letter) {
 
         letter = Character.toLowerCase(letter);
 
-        if (letter == 'a' || letter == 'e' || letter == 'i'
-                || letter == 'o' || letter == 'u' || letter == 'y') {
-            return true;
-        } else {
-            return false;
-        }
+        return letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u' || letter == 'y';
     }
 }

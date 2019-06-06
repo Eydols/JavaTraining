@@ -18,10 +18,10 @@ public class Dragon {
         if (age >= 0) {
             if (age <= MIDDLE_AGE) {
                 heads = BORN_HEADS + age * MIDDLE_HEADS;
-            } else if (age > MIDDLE_AGE && age <= OLD_AGE) {
-                heads = BORN_HEADS + MIDDLE_HEADS * MIDDLE_AGE + (age - MIDDLE_AGE) * OLD_HEADS;
+            } else if (age <= OLD_AGE) {
+                heads = BORN_HEADS + MIDDLE_HEADS * MIDDLE_AGE - MIDDLE_AGE * OLD_HEADS + OLD_HEADS * age;
             } else {
-                heads = BORN_HEADS + MIDDLE_HEADS * MIDDLE_AGE + (OLD_AGE - MIDDLE_AGE) * OLD_HEADS + age - OLD_AGE;
+                heads = BORN_HEADS + MIDDLE_HEADS * MIDDLE_AGE + (OLD_AGE - MIDDLE_AGE) * OLD_HEADS - OLD_AGE + age;
             }
         }
         return heads;

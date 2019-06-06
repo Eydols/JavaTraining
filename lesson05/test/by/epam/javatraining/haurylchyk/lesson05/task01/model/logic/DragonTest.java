@@ -34,7 +34,7 @@ public class DragonTest {
     }
 
     @Test
-    public void testCalcHeadsOld() {
+    public void testCalcHeads() {
         int age = 310;
         int expected = 813;
         assertEquals(expected, Dragon.calcHeads(age));

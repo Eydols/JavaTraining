@@ -4,23 +4,20 @@ import java.util.Random;
 
 public class UtilMood {
 
-    public static final int MAX = 4;
+    public static final int MAX_VAL = 4;
 
-    final private static String SAD = ":(";
-    final private static String NORMAL = ":|";
-    final private static String JOLLY = ":)";
-    final private static String HAPPY = ":D";
-    
-    final private static String ERROR = "Error!!!";
+    public static final Random RANDOM = new Random();
 
-    public static String getMood(int number) {
+    public static final String SAD = ":(";
+    public static final String NORMAL = ":|";
+    public static final String JOLLY = ":)";
+    public static final String HAPPY = ":D";
 
-        String mood = ERROR;
+    public static String showMood(int number) { // change public to private after testing
+
+        String mood = SAD;
 
         switch (number) {
-            case 0:
-                mood = SAD;
-                break;
             case 1:
                 mood = NORMAL;
                 break;
@@ -32,9 +29,9 @@ public class UtilMood {
         }
         return mood;
     }
-    
+
     public static String guessMood() {
-    return getMood(new Random().nextInt(MAX));
+        return showMood(RANDOM.nextInt(MAX_VAL));
     }
 
 }
