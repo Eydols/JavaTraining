@@ -12,9 +12,9 @@ public class Printer {
         }
     }
 
-    public static void print(String msg, double[][] array) {
+    public static void print(String msg, double[][] matrix) {
         System.out.println(msg);
-        for (double[] arr : array) {
+        for (double[] arr : matrix) {
             for (double elem : arr) {
                 System.out.print(elem + " ");
             }

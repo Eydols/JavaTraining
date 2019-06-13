@@ -1,5 +1,7 @@
 package by.epam.javatraining.haurylchyk.maintask01.task01.model.logic;
 
+import org.apache.log4j.Logger;
+
 /**
  * This class contains various methods for working with array contents,
  * including several types of sorting
@@ -10,14 +12,21 @@ package by.epam.javatraining.haurylchyk.maintask01.task01.model.logic;
  */
 public class UtilArray {
 
+    public static final Logger logger = Logger.getRootLogger();
+    public static final int INVALID_VALUE = -1;
+    public static final int NOT_FOUND_VALUE = -2;
+    public static final String INVALID_MASSEGE = "The array is not defined";
+    public static final String INVALID_MASSEGE_TWO = "The array is not defined or the array consists of a single element";
+    public static final String INVALID_MASSEGE_THREE = "The array is not sorted";
+
     //<editor-fold defaultstate="collapsed" desc="min/max">
     //This method finds the maximum element of a given array (O(n))
     public static double findMaxElement(double[] array) {
 
-        if (isEmpty(array)) {
-            return -1;
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE);
+            return INVALID_VALUE;
         }
-
         double max = array[0];
 
         for (int i = 1; i < array.length; i++) {
@@ -31,10 +40,10 @@ public class UtilArray {
     //This method finds the minimum element of a given array (O(n))
     public static double findMinElement(double[] array) {
 
-        if (isEmpty(array)) {
-            return -1;
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE);
+            return INVALID_VALUE;
         }
-
         double min = array[0];
 
         for (int i = 1; i < array.length; i++) {
@@ -50,8 +59,9 @@ public class UtilArray {
     //This method calculates the arithmetic mean of all elements of the array (O(n))
     public static double calcArithmeticMean(double[] array) {
 
-        if (isEmpty(array)) {
-            return -1;
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE);
+            return INVALID_VALUE;
         }
 
         final int SIZE_ARRAY = array.length;
@@ -66,8 +76,9 @@ public class UtilArray {
     //This method calculates the geometric mean of all elements of the array (O(n))
     public static double calcGeometricMean(double[] array) {
 
-        if (isEmpty(array)) {
-            return -1;
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE);
+            return INVALID_VALUE;
         }
 
         final int SIZE_ARRAY = array.length;
@@ -84,7 +95,8 @@ public class UtilArray {
     //This method checks if all elements of the array in an ordered form (increase) (O(n))
     public static boolean checkForIncrease(double[] array) {
 
-        if (isEmpty(array) || array.length == 1) {
+        if (isNotDefined(array) || array.length == 1) {
+            logger.warn(INVALID_MASSEGE_TWO);
             return false;
         }
 
@@ -99,7 +111,8 @@ public class UtilArray {
     //This method checks if all elements of the array in an ordered form (decrease) (O(n))
     public static boolean checkForDecrease(double[] array) {
 
-        if (isEmpty(array) || array.length == 1) {
+        if (isNotDefined(array) || array.length == 1) {
+            logger.warn(INVALID_MASSEGE_TWO);
             return false;
         }
 
@@ -116,24 +129,27 @@ public class UtilArray {
     //This method finds the first local maximum (O(n))
     public static int findFirstLocMax(double[] array) {
 
-        if (isEmpty(array)) {
-            return -1;
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE);
+            return INVALID_VALUE;
         }
 
+        final int INDEX_FIRST_ELEMENT = 0;
         final int INDEX_LAST_ELEMENT = array.length - 1;
         final int INDEX_PEN_ELEMENT = array.length - 2;
-        int index = -1;
+        int index = NOT_FOUND_VALUE;
 
         if (array[0] > array[1]) {
-            index = 0;
+            index = INDEX_FIRST_ELEMENT;
         }
+
         for (int i = 1; i < INDEX_LAST_ELEMENT; i++) {
-            if (index == -1 && array[i] > array[i - 1] && array[i] > array[i + 1]) {
+            if (index == NOT_FOUND_VALUE && array[i] > array[i - 1] && array[i] > array[i + 1]) {
                 index = i;
                 break;
             }
         }
-        if (index == -1 && array[INDEX_LAST_ELEMENT] > array[INDEX_PEN_ELEMENT]) {
+        if (index == NOT_FOUND_VALUE && array[INDEX_LAST_ELEMENT] > array[INDEX_PEN_ELEMENT]) {
             index = INDEX_LAST_ELEMENT;
         }
         return index;
@@ -142,23 +158,26 @@ public class UtilArray {
     //This method finds the first local minimum (O(n))
     public static int findFirstLocMin(double[] array) {
 
-        if (isEmpty(array)) {
-            return -1;
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE);
+            return INVALID_VALUE;
         }
+
+        final int INDEX_FIRST_ELEMENT = 0;
         final int INDEX_LAST_ELEMENT = array.length - 1;
         final int INDEX_PEN_ELEMENT = array.length - 2;
-        int index = -1;
+        int index = NOT_FOUND_VALUE;
 
         if (array[0] < array[1]) {
-            index = 0;
+            index = INDEX_FIRST_ELEMENT;
         }
         for (int i = 1; i < INDEX_LAST_ELEMENT; i++) {
-            if (index == -1 && array[i] < array[i - 1] && array[i] < array[i + 1]) {
+            if (index == NOT_FOUND_VALUE && array[i] < array[i - 1] && array[i] < array[i + 1]) {
                 index = i;
                 break;
             }
         }
-        if (index == -1 && array[INDEX_LAST_ELEMENT] < array[INDEX_PEN_ELEMENT]) {
+        if (index == NOT_FOUND_VALUE && array[INDEX_LAST_ELEMENT] < array[INDEX_PEN_ELEMENT]) {
             index = INDEX_LAST_ELEMENT;
         }
 
@@ -170,11 +189,12 @@ public class UtilArray {
     //This method looks for the specified element in the array (O(n))
     public static int searchElementLinear(double[] array, double element) {
 
-        if (isEmpty(array)) {
-            return -1;
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE);
+            return INVALID_VALUE;
         }
 
-        int index = -1;
+        int index = NOT_FOUND_VALUE;
 
         for (int i = 0; i < array.length; i++) {
             if (array[i] == element) {
@@ -190,10 +210,11 @@ public class UtilArray {
     public static int searchElementBinary(double[] array, double element) {
 
         if (!checkForIncrease(array)) {
-            return -1;
+            logger.warn(INVALID_MASSEGE_THREE);
+            return INVALID_VALUE;
         }
 
-        int index = -1;
+        int index = NOT_FOUND_VALUE;
         int left = 0;
         int right = array.length - 1;
 
@@ -216,33 +237,46 @@ public class UtilArray {
 
     //<editor-fold defaultstate="collapsed" desc="sort">
     //This method sorts array elements in ascending order (O(n^2))
-    public static double[] sortElementsBubbleAsc(double[] array) {
-        
-        for (int j = array.length - 1; j > 1; j--) {
+    public static void sortElementsBubbleAsc(double[] array) {
+
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE_TWO);
+            return;
+        }
+
+        for (int j = array.length - 1; j > 0; j--) {
             for (int i = 0; i < j; i++) {
                 if (array[i] > array[i + 1]) {
                     swap(array, i, i + 1);
                 }
             }
         }
-        return array;
     }
 
     //This method sorts array elementsin descending order (O(n^2))
-    public static double[] sortElementsBubbleDes(double[] array) {
+    public static void sortElementsBubbleDes(double[] array) {
 
-        for (int j = array.length - 1; j > 1; j--) {
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE_TWO);
+            return;
+        }
+
+        for (int j = array.length - 1; j > 0; j--) {
             for (int i = 0; i < j; i++) {
                 if (array[i] < array[i + 1]) {
                     swap(array, i, i + 1);
                 }
             }
         }
-        return array;
     }
 
     //This method sorts array elements in ascending order (O(n^2))
-    public static double[] sortElementsInsertionAsc(double[] array) {
+    public static void sortElementsInsertionAsc(double[] array) {
+
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE_TWO);
+            return;
+        }
 
         for (int j = 1; j < array.length; j++) {
 
@@ -253,14 +287,17 @@ public class UtilArray {
                 array[i] = array[i - 1];
                 --i;
             }
-
             array[i] = temp;
         }
-        return array;
     }
 
     //This method sorts array elements in descending order (O(n^2))
-    public static double[] sortElementsInsertionDes(double[] array) {
+    public static void sortElementsInsertionDes(double[] array) {
+
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE_TWO);
+            return;
+        }
 
         for (int j = 1; j < array.length; j++) {
 
@@ -271,14 +308,17 @@ public class UtilArray {
                 array[i] = array[i - 1];
                 --i;
             }
-
             array[i] = temp;
         }
-        return array;
     }
 
     //This method sorts array elements in ascending order (O(n^2))
-    public static double[] sortElementsSelectionAsc(double[] array) {
+    public static void sortElementsSelectionAsc(double[] array) {
+
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE_TWO);
+            return;
+        }
 
         final int SIZE_ARRAY = array.length;
 
@@ -291,11 +331,15 @@ public class UtilArray {
             }
             swap(array, j, min);
         }
-        return array;
     }
 
     //This method sorts array elements in descending order (O(n^2))
-    public static double[] sortElementsSelectionDes(double[] array) {
+    public static void sortElementsSelectionDes(double[] array) {
+
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE_TWO);
+            return;
+        }
 
         final int SIZE_ARRAY = array.length;
 
@@ -308,13 +352,17 @@ public class UtilArray {
             }
             swap(array, j, min);
         }
-        return array;
     }
 
     //This method sorts array elements in ascending order (O(n*log(n))
-    public static double[] sortElementsMerge(double[] array) {
+    public static void sortElementsMerge(double[] array) {
+
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE_TWO);
+            return;
+        }
+
         recMergeSort(array, 0, array.length - 1);
-        return array;
     }
 
     //This method sorts both halves of the array then merges them
@@ -356,9 +404,14 @@ public class UtilArray {
     }
 
     //This method calls the basic quick sort method
-    public static double[] sortElementsQuick(double[] array) {
+    public static void sortElementsQuick(double[] array) {
+
+        if (isNotDefined(array)) {
+            logger.warn(INVALID_MASSEGE_TWO);
+            return;
+        }
+
         recSortQuick(array, 0, array.length - 1);
-        return array;
     }
 
     //This method sorts array elements in ascending order (O(n*log(n))
@@ -394,7 +447,11 @@ public class UtilArray {
 //</editor-fold>
 
     //This method reverses all the elements of the array (O(n))
-    public static double[] reversElements(double[] array) {
+    public static void reversElements(double[] array) {
+
+        if (isNotDefined(array) || array.length == 1) {
+            logger.warn(INVALID_MASSEGE_TWO);
+        }
 
         int left = 0;
         int right = array.length - 1;
@@ -404,7 +461,6 @@ public class UtilArray {
             left += 1;
             right -= 1;
         }
-        return array;
     }
 
     //An auxiliary method that swaps two specified elements of the same array
@@ -417,8 +473,19 @@ public class UtilArray {
     }
 
     //An auxiliary method that checks the array for emptiness
-    private static boolean isEmpty(double[] array) {
+    private static boolean isNotDefined(double[] array) {
         return array == null || array.length == 0;
+    }
+
+    //This method returns a string representation of an array
+    public static String toString(double[] array) {
+
+        String msg = "";
+
+        for (double elem : array) {
+            msg += " " + elem;
+        }
+        return msg;
     }
 
 }

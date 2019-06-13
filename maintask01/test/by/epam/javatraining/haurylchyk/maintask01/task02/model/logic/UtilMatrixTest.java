@@ -7,7 +7,7 @@ public class UtilMatrixTest {
 
     @Test
     public void testFindMaxElement() {
-        double matrix[][] = new double[][]{{2.2, 35.7, 48.2, 5.9}, {0.2, 54.2, 488.0, 0.7}, {32.6, 4.7, 808.3, 6, 37.1}};
+        double matrix[][] = new double[][]{{2.2, 35.7, 48.2, 5.9}, {54.2, 0.2, 808.3, 0.7}, {32.6, 4.7, 488.0, 37.1}};
         double expected = 808.3;
         assertEquals(expected, UtilMatrix.findMaxElement(matrix), 0.1);
     }
@@ -21,7 +21,7 @@ public class UtilMatrixTest {
 
     @Test
     public void testFindMinElement() {
-        double matrix[][] = new double[][]{{2.2, 35.7, 48.2, 5.9}, {0.2, 54.2, 488.0, 0.7}, {32.6, 4.7, 808.3, 6, 37.1}};
+        double matrix[][] = new double[][]{{2.2, 35.7, 48.2, 5.9}, {54.2, 0.2, 808.3, 0.7}, {32.6, 4.7, 488.0, 37.1}};
         double expected = 0.2;
         assertEquals(expected, UtilMatrix.findMinElement(matrix), 0.1);
     }
@@ -35,7 +35,7 @@ public class UtilMatrixTest {
 
     @Test
     public void testCheckSymMainDiadInvalid() {
-        double matrix[][] = new double[][]{{2.2, 35.7, 48.2, 5.9}, {0.2, 54.2, 488.0, 0.7}, {32.6, 4.7, 808.3, 6, 37.1}};
+        double matrix[][] = new double[][]{{2.2, 35.7, 48.2, 5.9}, {54.2, 0.2, 808.3, 0.7}, {32.6, 4.7, 488.0, 37.1}};
         boolean expected = false;
         assertEquals(expected, UtilMatrix.checkSymMainDiad(matrix));
     }
@@ -56,22 +56,52 @@ public class UtilMatrixTest {
 
     @Test
     public void testCheckSymSideDiadInvalid() {
-        double matrix[][] = new double[][]{{2.2, 35.7, 48.2, 5.9}, {0.2, 54.2, 488.0, 0.7}, {32.6, 4.7, 808.3, 6, 37.1}};
+        double matrix[][] = new double[][]{{2.2, 35.7, 48.2, 5.9}, {54.2, 0.2, 808.3, 0.7}, {32.6, 4.7, 488.0, 37.1}};
         boolean expected = false;
         assertEquals(expected, UtilMatrix.checkSymSideDiad(matrix));
     }
 
     @Test
+    public void testFindFirstLocMaxValid() {
+        double matrix[][] = new double[][]{{2.2, 35.7, 48.2, 5.9}, {54.2, 0.2, 808.3, 0.7}, {32.6, 4.7, 488.0, 37.1}};
+        int[] expected = new int[]{1, 2};
+        assertArrayEquals(expected, UtilMatrix.findFirstLocMax(matrix));
+    }
+
+    @Test
+    public void testFindFirstLocMaxInvalid() {
+        double matrix[][] = new double[0][0];
+        int[] expected = new int[]{-1, -1};
+        assertArrayEquals(expected, UtilMatrix.findFirstLocMax(matrix));
+    }
+
+    @Test
+    public void testFindFirstLocMinValid() {
+        double matrix[][] = new double[][]{{2.2, 35.7, 48.2, 5.9}, {54.2, 0.2, 808.3, 0.7}, {32.6, 4.7, 488.0, 37.1}};
+        int[] expected = new int[]{1, 1};
+        assertArrayEquals(expected, UtilMatrix.findFirstLocMin(matrix));
+    }
+
+    @Test
+    public void testFindFirstLocMinInvalid() {
+        double matrix[][] = new double[0][0];
+        int[] expected = new int[]{-1, -1};
+        assertArrayEquals(expected, UtilMatrix.findFirstLocMin(matrix));
+    }
+
+    @Test
     public void testTranspSqMatrix() {
         double matrixSq[][] = new double[][]{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+        UtilMatrix.transpSqMatrix(matrixSq);
         double expected[][] = new double[][]{{1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, {4, 8, 12, 16}};
-        assertArrayEquals(expected, UtilMatrix.transpSqMatrix(matrixSq));
+        assertArrayEquals(expected, matrixSq);
     }
-    
+
     @Test
     public void testTranspSqMatrixInvalidNotSquare() {
         double matrixSq[][] = new double[][]{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
+        UtilMatrix.transpSqMatrix(matrixSq);
         double expected[][] = new double[][]{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
-        assertArrayEquals(expected, UtilMatrix.transpSqMatrix(matrixSq));
+        assertArrayEquals(expected, matrixSq);
     }
 }
