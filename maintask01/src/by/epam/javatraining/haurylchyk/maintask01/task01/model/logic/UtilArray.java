@@ -451,6 +451,7 @@ public class UtilArray {
 
         if (isNotDefined(array) || array.length == 1) {
             logger.warn(INVALID_MASSEGE_TWO);
+            return;
         }
 
         int left = 0;
