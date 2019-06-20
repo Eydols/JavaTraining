@@ -1,0 +1,10 @@
+book:Regence:120:1841:8:1234:Duma:Tragedy:::
+book:Outcast:555:1850:9:1334:Hugo:Comedy:::
+book:War and peace:1250:1862:10:2334:Tolstoy:Tragedy:::
+book:Idiot:980:1888:10:2334:Dostoevsky:Tragedy:::
+journal:Science and life:45:1985:6::::15:Science
+journal:Maxim:74:2019:7::::3:Fashion
+journal:Burda:35:1990:6::::44:Fashion
+album:Britain:100:2001:4::::::Foto
+album:Architecture:93:1956:5::::::Drawing
+album:Classical works:93:1956:6::::::Sheet music
